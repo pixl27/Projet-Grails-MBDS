@@ -131,5 +131,5 @@ server:
     contextPath: /projet
 annonces:
     illustrations:
-        path:  "C:/Users/gregg/IdeaProjects/projet_itu_2020_2021/grails-app/assets/images/"
+        path:  "C:/Users/tolot/Documents/GitHub/Projet-Grails-MBDS/grails-app/assets/images/"
         url: "http://localhost:8081/projet/assets/"
