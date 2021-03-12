@@ -8,12 +8,12 @@ import static org.springframework.http.HttpStatus.*
 class AnnonceController {
 
     AnnonceService annonceService
-    @Secured(['ROLE_ADMIN','ROLE_MODO'])
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond annonceService.list(params), model:[annonceCount: annonceService.count()]
     }
-    @Secured(['ROLE_ADMIN','ROLE_MODO'])
+
     def show(Long id) {
         respond annonceService.get(id)
     }
@@ -43,11 +43,11 @@ class AnnonceController {
             '*' { respond annonce, [status: CREATED] }
         }
     }
-    @Secured(['ROLE_ADMIN','ROLE_MODO'])
+
     def edit(Long id) {
         respond annonceService.get(id), model: [userList: User.list(), baseUrl: grailsApplication.config.annonces.illustrations.url]
     }
-    @Secured(['ROLE_ADMIN','ROLE_MODO'])
+
     def update() {
         def annonce = Annonce.get(params.id)
         annonce.title = params.title
@@ -57,6 +57,8 @@ class AnnonceController {
         def uploadedFile = request.getFile("file")
         File fileDest = new File(grailsApplication.config.annonces.illustrations.path+uploadedFile.originalFilename)
         uploadedFile.transferTo(fileDest)
+        annonce.addToIllustrations(new Illustration(filename: uploadedFile.originalFilename))
+
         if (annonce == null) {
             notFound()
             return
