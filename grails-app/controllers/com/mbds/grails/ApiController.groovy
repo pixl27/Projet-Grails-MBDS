@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse
 
 @Secured(['ROLE_ADMIN'])
 class ApiController {
+    AnnonceService annonceService
 
 //    GET / PUT / PATCH / DELETE
 //    url : localhost:8081/projet/api/annonce(s)/{id}
@@ -30,6 +31,10 @@ class ApiController {
             case "PATCH":
                 break
             case "DELETE":
+                if (!params.id)
+                    return response.status = HttpServletResponse.SC_BAD_REQUEST
+                annonceService.delete(params.id)
+                return response.status = HttpServletResponse.SC_OK
                 break
             default:
                 return response.status = HttpServletResponse.SC_METHOD_NOT_ALLOWED
