@@ -64,6 +64,7 @@ class AnnonceController {
             return
         }
         /**
+         * FAIT
          * 1. Récupérer le fichier dans la requête
          * 2. Sauvegarder le fichier localement
          * 3. Créer un illustration sur le fichier que vous avez sauvegardé
