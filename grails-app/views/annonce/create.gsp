@@ -25,14 +25,39 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <g:form controller="annonce" action="save" method="POST">
-                <fieldset class="form">
-                    <f:all bean="annonce"/>
-                </fieldset>
-                <fieldset class="buttons">
+
+            <div class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title">Quick Example</h3>
+                </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+
+                <g:form controller="annonce" action="save" method="POST">
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label for="titre">Titre *</label>
+                        <input name="title" type="text" class="form-control" id="titre" placeholder="titre">
+                      </div>
+                      <div class="form-group">
+                        <label for="desc">Description *</label>
+                        <input name="description" type="text" class="form-control" id="desc" placeholder="description">
+                      </div>
+                      <div class="form-group">
+                        <label for="price">Price *</label>
+                        <input name="price" type="text" class="form-control" id="price" placeholder="price">
+                      </div>
+                      <div class="form-group">
+                        <label>Eto mbola tokony misy bouton oe add illustration</label>
+                        </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-                </fieldset>
-            </g:form>
+
+                    </div>
+                </g:form>
+            </div>
         </div>
     </body>
 </html>

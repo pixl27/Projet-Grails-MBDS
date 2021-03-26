@@ -1,5 +1,6 @@
 package com.mbds.grails
 
+import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
@@ -8,6 +9,7 @@ import static org.springframework.http.HttpStatus.*
 class AnnonceController {
 
     AnnonceService annonceService
+    SpringSecurityService springSecurityService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -19,17 +21,24 @@ class AnnonceController {
     }
 
     def create() {
+        println "mandalo create"+params
         respond new Annonce(params)
     }
 
     def save(Annonce annonce) {
+        println "mandalo save"+annonce
         if (annonce == null) {
             notFound()
             return
         }
 
         try {
-            annonceService.save(annonce)
+
+            def user = User.get(springSecurityService.currentUser.id)
+            user.addToAnnonces(annonce)
+            user.save(flush: true, failOnError: true)
+
+            println "vita chocolat"
         } catch (ValidationException e) {
             respond annonce.errors, view:'create'
             return
@@ -72,6 +81,7 @@ class AnnonceController {
          */
 
         try {
+
             annonceService.save(annonce)
         } catch (ValidationException e) {
             respond annonce.errors, view:'edit'
