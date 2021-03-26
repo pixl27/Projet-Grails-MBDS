@@ -9,12 +9,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 
+    <asset:javascript src="plugins/jquery/jquery.min.js"/>
+    <!-- Bootstrap 4 -->
+    <asset:javascript src="plugins/bootstrap/js/bootstrap.bundle.min.js"/>
+    <!-- DataTables  & Plugins -->
+    <asset:javascript src="plugins/datatables/jquery.dataTables.min.js"/>
+    <asset:javascript src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"/>
+    <asset:javascript src="plugins/datatables-responsive/js/dataTables.responsive.min.js"/>
+    <asset:javascript src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"/>
+    <asset:javascript src="plugins/datatables-buttons/js/dataTables.buttons.min.js"/>
+    <asset:javascript src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"/>
+    <asset:javascript src="plugins/jszip/jszip.min.js"/>
+    <asset:javascript src="plugins/pdfmake/pdfmake.min.js"/>
+    <asset:javascript src="plugins/pdfmake/vfs_fonts.js"/>
+    <asset:javascript src="plugins/datatables-buttons/js/buttons.html5.min.js"/>
+    <asset:javascript src="plugins/datatables-buttons/js/buttons.print.min.js"/>
+    <asset:javascript src="plugins/datatables-buttons/js/buttons.colVis.min.js"/>
+    <!-- AdminLTE Ap -->
+    <asset:javascript src="js/adminlte.min.js"/>
+
+
     <asset:stylesheet src="plugins/fontawesome-free/css/all.min.css"/>
     <asset:stylesheet src="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"/>
     <asset:stylesheet src="plugins/datatables-responsive/css/responsive.bootstrap4.min.css"/>
     <asset:stylesheet src="plugins/datatables-buttons/css/buttons.bootstrap4.min.css"/>
     <asset:stylesheet src="css/adminlte.min.css"/>
-
     <g:layoutHead/>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -211,25 +230,6 @@
     <!-- /.control-sidebar -->
 </div>
 
-<asset:javascript src="plugins/jquery/jquery.min.js"/>
-<!-- Bootstrap 4 -->
-<asset:javascript src="plugins/bootstrap/js/bootstrap.bundle.min.js"/>
-<!-- DataTables  & Plugins -->
-<asset:javascript src="plugins/datatables/jquery.dataTables.min.js"/>
-<asset:javascript src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"/>
-<asset:javascript src="plugins/datatables-responsive/js/dataTables.responsive.min.js"/>
-<asset:javascript src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"/>
-<asset:javascript src="plugins/datatables-buttons/js/dataTables.buttons.min.js"/>
-<asset:javascript src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"/>
-<asset:javascript src="plugins/jszip/jszip.min.js"/>
-<asset:javascript src="plugins/pdfmake/pdfmake.min.js"/>
-<asset:javascript src="plugins/pdfmake/vfs_fonts.js"/>
-<asset:javascript src="plugins/datatables-buttons/js/buttons.html5.min.js"/>
-<asset:javascript src="plugins/datatables-buttons/js/buttons.print.min.js"/>
-<asset:javascript src="plugins/datatables-buttons/js/buttons.colVis.min.js"/>
-<!-- AdminLTE Ap -->
-<asset:javascript src="js/adminlte.min.js"/>
-<asset:javascript src="js/demo.js"/>
 
 </body>
 </html>

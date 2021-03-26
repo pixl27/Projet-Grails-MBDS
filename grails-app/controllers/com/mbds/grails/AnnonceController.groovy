@@ -12,8 +12,7 @@ class AnnonceController {
     SpringSecurityService springSecurityService
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond annonceService.list(params), model:[annonceCount: annonceService.count()]
+        respond annonceService.list(params)
     }
 
     def show(Long id) {
@@ -54,6 +53,7 @@ class AnnonceController {
     }
 
     def edit(Long id) {
+
         respond annonceService.get(id), model: [userList: User.list(), baseUrl: grailsApplication.config.annonces.illustrations.url]
     }
 
@@ -64,9 +64,12 @@ class AnnonceController {
         annonce.price = Double.parseDouble(params.price)
 //        annonce.author = User.get(params.author.id)
         def uploadedFile = request.getFile("file")
-        File fileDest = new File(grailsApplication.config.annonces.illustrations.path+uploadedFile.originalFilename)
-        uploadedFile.transferTo(fileDest)
-        annonce.addToIllustrations(new Illustration(filename: uploadedFile.originalFilename))
+        if(!uploadedFile.isEmpty()){
+            File fileDest = new File(grailsApplication.config.annonces.illustrations.path+uploadedFile.originalFilename)
+            uploadedFile.transferTo(fileDest)
+            annonce.addToIllustrations(new Illustration(filename: uploadedFile.originalFilename))
+        }
+
 
         if (annonce == null) {
             notFound()

@@ -19,67 +19,52 @@
     </ul>
 </div>
 
-<div id="edit-annonce" class="content scaffold-edit" role="main">
-    <h1><g:message code="default.edit.label" args="[entityName]"/></h1>
-    <g:if test="${flash.message}">
-        <div class="message" role="status">${flash.message}</div>
-    </g:if>
-    <g:hasErrors bean="${this.annonce}">
-        <ul class="errors" role="alert">
-            <g:eachError bean="${this.annonce}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
-                        error="${error}"/></li>
-            </g:eachError>
-        </ul>
-    </g:hasErrors>
-    <g:uploadForm controller="annonce" action="update" id="${annonce.id}">
-        <g:hiddenField name="version" value="${this.annonce?.version}"/>
-        <fieldset class="form">
-            <div class="fieldcontain required">
-                <label for="title">Title
-                    <span class="required-indicator">*</span>
-                </label>
-                <input type="text" name="title" value="${annonce.title}" required="" id="title">
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">Quick Example</h3>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+<g:uploadForm controller="annonce" action="update" id="${annonce.id}">
+    <g:hiddenField name="version" value="${this.annonce?.version}"/>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Title</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="title" value="${annonce.title}" placeholder="Enter email">
             </div>
-
-            <div class="fieldcontain required">
-                <label for="description">Description
-                    <span class="required-indicator">*</span>
-                </label>
-                <input type="text" name="description" value="${annonce.description}" required=""
-                               id="description">
+            <div class="form-group">
+                <label for="s">Description</label>
+                <input type="text" class="form-control" id="s"  name="description" value="${annonce.description}" placeholder="Password">
             </div>
-
-            <div class="fieldcontain required">
-                <label for="price">Price
-                    <span class="required-indicator">*</span>
-                </label><input type="number decimal" name="price" value="${annonce.price}" required="" min="0.0" id="price">
+            <div class="form-group">
+                <label for="e">Prix</label>
+                <input type="text" class="form-control" id="e"  name="price" value="${annonce.price}" placeholder="Prix">
             </div>
-
             <div class="fieldcontain">
                 <label for="illustrations">Illustrations</label>
                 <g:each in="${annonce.illustrations}" var="illustration">
                     <img src="${baseUrl + illustration.filename}" />
                 </g:each>
             </div>
-
-            <div class="fieldcontain">
-                <label for="file">Upload</label>
-                <input style="display: inline" type="file" name="file" id="file"/>
+            <div class="form-group">
+                <label for="exampleInputFile">Ajoutez nouvelle image</label>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="file" id="file">
+                        <label class="custom-file-label" for="exampleInputFile">Choisir une nouvelle fichier</label>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Upload</span>
+                    </div>
+                </div>
             </div>
+        </div>
+        <!-- /.card-body -->
 
-            <div class="fieldcontain required">
-                <label for="author">Author
-                    <span class="required-indicator">*</span>
-                </label>
-                <g:select name="author.id" from="${userList}" optionKey="id" optionValue="username" />
-            </div>
-        </fieldset>
-        <fieldset class="buttons">
-            <input class="save" type="submit"
-                   value="${message(code: 'default.button.update.label', default: 'Update')}"/>
-        </fieldset>
-    </g:uploadForm>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+</g:uploadForm>
 </div>
 </body>
 </html>

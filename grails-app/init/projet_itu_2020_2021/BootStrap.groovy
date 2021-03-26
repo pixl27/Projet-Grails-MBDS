@@ -28,7 +28,7 @@ class BootStrap {
                 (1..5).each {
                     Integer annonceIdx ->
                         def annonceInstance = new Annonce(
-                                title: "Titre de l'annonce $annonceIdx",
+                                title: "Titre de l'annonce $annonceIdx ",
                                 description: "Description de l'annonce $annonceIdx",
                                 price: 100 * annonceIdx
                         )
