@@ -19,6 +19,8 @@
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
+
+
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">DataTable with minimal features &amp; hover style</h3>
@@ -55,6 +57,8 @@
             <!-- /.card-body -->
         </div>
         </div>
+
+
     <g:javascript>
         $(document).ready( function () {
             $('#example1').DataTable();

@@ -14,6 +14,16 @@
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
+
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Quick Example</h3>
+        </div>
+
+
+
+
+
         <div id="edit-user" class="content scaffold-edit" role="main">
             <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
@@ -36,5 +46,7 @@
                 </fieldset>
             </g:form>
         </div>
+
+
     </body>
 </html>

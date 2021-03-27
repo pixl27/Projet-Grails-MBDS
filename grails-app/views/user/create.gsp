@@ -25,14 +25,44 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <g:form resource="${this.user}" method="POST">
-                <fieldset class="form">
-                    <f:all bean="user"/>
-                </fieldset>
-                <fieldset class="buttons">
-                    <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-                </fieldset>
+
+
+            <div class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title">Quick Example</h3>
+                </div>
+
+            <g:form controller="user" action="save" method="POST">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input name="username" type="text" class="form-control" id="username" placeholder="Username">
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input name="password" type="password" class="form-control" id="password" placeholder="Password">
+                  </div>
+
+                    <select name="role" class="form-select" aria-label="Default select example">
+
+                        <g:each in="${roleList}" var="role">
+
+                            <option value="${role.authority}">${role.authority}</option>
+
+
+                        </g:each>
+                    </select>
+                </div>
+
+
+                <div class="card-footer">
+                <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+
+                </div>
             </g:form>
+
+
+
         </div>
     </body>
 </html>

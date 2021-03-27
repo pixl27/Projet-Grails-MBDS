@@ -1,8 +1,10 @@
 package com.mbds.grails
 
+import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
+@Secured('ROLE_ADMIN')
 class UserController {
 
     UserService userService
@@ -19,17 +21,23 @@ class UserController {
     }
 
     def create() {
-        respond new User(params)
+
+        respond new User(params), model: [roleList:  Role.list()]
     }
 
     def save(User user) {
+
         if (user == null) {
             notFound()
             return
         }
 
         try {
-            userService.save(user)
+
+            def userUser = new User(username: params.username, password: params.password ).save()
+            def userRole = Role.findByAuthority(params.role)
+            UserRole.create(userUser, userRole, true)
+
         } catch (ValidationException e) {
             respond user.errors, view:'create'
             return
@@ -37,10 +45,9 @@ class UserController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), user.id])
-                redirect user
+                redirect action:"index", method:"GET"
             }
-            '*' { respond user, [status: CREATED] }
+            '*'{ render status: NO_CONTENT }
         }
     }
 
