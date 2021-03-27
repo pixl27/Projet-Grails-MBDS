@@ -7,28 +7,14 @@
     </head>
 <body>
 
-
-<a href="#list-annonce" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-<div class="nav" role="navigation">
-    <ul>
-        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-    </ul>
-</div>
 <div class="card">
-    <div class="card-header">
-        <h3 class="card-title">DataTable with minimal features &amp; hover style</h3>
-    </div>
+
     <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">DataTable with default features</h3>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
-            </div>
             <!-- /.card-header -->
             <div class="card-body">
+
+
+
                 <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12">
                     <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                         <thead>
@@ -55,17 +41,16 @@
                                     <button type="button" id="button_${utilisateur.id}" class="btn btn-danger" data-toggle="modal" data-target="#delete_${utilisateur.id}" data-whatever="@mdo">Delete</button>
 
                                 </td>
-                            </tr>
 
-                            <!-- /.modale start delete -->
-                            <div class="modal fade" id="delete_${utilisateur.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 id="exampleModalLabel1">Vous voulez vraiment suprimer ${utilisateur.username} de cette utilisateur ? </h4>
-                                        </div>
+                                <!-- /.modale start delete -->
+                                <div class="modal fade" id="delete_${utilisateur.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 id="exampleModalLabel1">Vous voulez vraiment suprimer ${utilisateur.username} de cette utilisateur ? </h4>
+                                            </div>
 
-                                        <div class="modal-body">
+                                            <div class="modal-body">
 
                                                 <g:form controller="user" id="${utilisateur.id}" action="delete" method="DELETE">
                                                     <input type="submit" class="btn btn-success" value="Oui" />
@@ -73,16 +58,20 @@
 
 
 
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Non</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Non</button>
+
+                                            </div>
 
                                         </div>
 
+
                                     </div>
-
-
                                 </div>
-                            </div>
-                            <!-- /.modale end delete -->
+                                <!-- /.modale end delete -->
+
+                            </tr>
+
+
 
                         </g:each>
                         </tbody>

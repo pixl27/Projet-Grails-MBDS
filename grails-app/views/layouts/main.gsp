@@ -148,10 +148,10 @@
                                 </g:link>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/examples/invoice.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
+                                <g:link controller="user" class="create nav-link">
+                                    <i class="fas fa-angle-double-right nav-icon"></i>
                                     <p>Utilisateur</p>
-                                </a>
+                                </g:link>
                             </li>
                         </ul>
                     </li>

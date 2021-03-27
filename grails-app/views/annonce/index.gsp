@@ -48,10 +48,36 @@
 
                         </td>
                         <td>
-    <g:form resource="${annonce}" method="DELETE">
-                            <input type="submit" class="btn btn-danger" value="Supprimer" />
-      </g:form>
+                            <button type="button" id="button_${annonce.id}" class="btn btn-danger" data-toggle="modal" data-target="#delete_${annonce.id}" data-whatever="@mdo">Delete</button>
                         </td>
+
+                        <!-- /.modale start delete -->
+                        <div class="modal fade" id="delete_${annonce.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 id="exampleModalLabel1">Vous voulez vraiment suprimer ${annonce.title} de cette annonce ? </h4>
+                                    </div>
+
+                                    <div class="modal-body">
+
+                                        <g:form controller="annonce" id="${annonce.id}" action="delete" method="DELETE">
+                                            <input type="submit" class="btn btn-success" value="Oui" />
+                                        </g:form>
+
+
+
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Non</button>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <!-- /.modale end delete -->
+
                     </tr>
    </g:each>
                     </tbody>
