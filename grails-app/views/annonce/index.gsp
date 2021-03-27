@@ -19,6 +19,8 @@
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
+
+
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">DataTable with minimal features &amp; hover style</h3>
@@ -45,7 +47,11 @@
                             <g:link id="${annonce.id}" action="edit">${annonce.title}</g:link>
 
                         </td>
-                        <td><input type="submit" class="btn btn-danger" value="Supprimer" /></td>
+                        <td>
+    <g:form resource="${annonce}" method="DELETE">
+                            <input type="submit" class="btn btn-danger" value="Supprimer" />
+      </g:form>
+                        </td>
                     </tr>
    </g:each>
                     </tbody>
@@ -55,6 +61,8 @@
             <!-- /.card-body -->
         </div>
         </div>
+
+
     <g:javascript>
         $(document).ready( function () {
             $('#example1').DataTable();

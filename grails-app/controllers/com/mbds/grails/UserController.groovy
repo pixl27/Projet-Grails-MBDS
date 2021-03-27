@@ -1,17 +1,19 @@
 package com.mbds.grails
 
+import grails.plugin.springsecurity.SpringSecurityService
+import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
+@Secured('ROLE_ADMIN')
 class UserController {
 
     UserService userService
-
+    SpringSecurityService springSecurityService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond userService.list(params), model:[userCount: userService.count()]
+        respond userService.list(params)
     }
 
     def show(Long id) {
@@ -19,17 +21,23 @@ class UserController {
     }
 
     def create() {
-        respond new User(params)
+
+        respond new User(params), model: [roleList:  Role.list()]
     }
 
     def save(User user) {
+
         if (user == null) {
             notFound()
             return
         }
 
         try {
-            userService.save(user)
+
+            def userUser = new User(username: params.username, password: params.password ).save()
+            def userRole = Role.findByAuthority(params.role)
+            UserRole.create(userUser, userRole, true)
+
         } catch (ValidationException e) {
             respond user.errors, view:'create'
             return
@@ -37,36 +45,74 @@ class UserController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), user.id])
-                redirect user
+                redirect action:"index", method:"GET"
             }
-            '*' { respond user, [status: CREATED] }
+            '*'{ render status: NO_CONTENT }
         }
     }
 
     def edit(Long id) {
-        respond userService.get(id)
+
+        respond userService.get(id) , model: [roleList:  Role.list()]
+
     }
 
-    def update(User user) {
+    def update() {
+        def enabled
+        def accountExpired
+        def accountLocked
+        def passwordExpired
+        if(params.enabled == "on"){
+             enabled = true
+        }
+        else {
+              enabled = false
+        }
+        if(params.accountExpired == "on"){
+             accountExpired = true
+        }
+        else {
+              accountExpired = false
+        }
+        if(params.accountLocked == "on"){
+             accountLocked = true
+        }
+        else {
+               accountLocked = false
+        }
+        if(params.passwordExpired == "on"){
+             passwordExpired = true
+        }
+        else {
+             passwordExpired = false
+        }
+
+        def user = User.get(params.id)
+        user.username = params.username
+        user.enabled = enabled
+        user.accountExpired = accountExpired
+        user.accountLocked = accountLocked
+        user.passwordExpired = passwordExpired
+        def role = Role.get(params.role)
+        UserRole.create(user,role,true)
+
+//        user.author = User.get(params.author.id)
         if (user == null) {
             notFound()
             return
         }
-
         try {
             userService.save(user)
-        } catch (ValidationException e) {
-            respond user.errors, view:'edit'
-            return
-        }
 
+        }
+        catch(Exception e){
+
+        }
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), user.id])
-                redirect user
+                redirect action:"index", method:"GET"
             }
-            '*'{ respond user, [status: OK] }
+            '*'{ render status: NO_CONTENT }
         }
     }
 
@@ -75,6 +121,7 @@ class UserController {
             notFound()
             return
         }
+        println "delete"+id
 
         userService.delete(id)
 
