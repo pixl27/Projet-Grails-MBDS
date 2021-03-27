@@ -92,11 +92,6 @@ class AnnonceController {
         }
         println "test submit"+illustrationAsupprimer.size()
 
-
-
-
-
-
         try {
 
             annonceService.save(annonce)
