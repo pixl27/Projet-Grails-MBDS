@@ -128,7 +128,7 @@ environments:
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
 server:
     port: 8080
-    contextPath: /projet
+
 annonces:
     illustrations:
         path:  "C:/Users/One/OneDrive/Documents/GitHub/Projet-Grails-MBDS/grails-app/assets/images/"
