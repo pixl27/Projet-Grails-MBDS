@@ -45,7 +45,7 @@
 
     <div class="svg" role="presentation">
         <div class="grails-logo-container">
-            <asset:image src="leboncoin.jpg" class="grails-logo"  style="width:100%;heigth:100%"/>
+            <asset:image src="Leboncoin.jpg" class="grails-logo"  style="width:100%;heigth:100%"/>
         </div>
     </div>
 <br>
