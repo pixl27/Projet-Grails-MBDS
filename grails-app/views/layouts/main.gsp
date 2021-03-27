@@ -54,9 +54,7 @@
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="index3.html" class="nav-link">Home</a>
             </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Deconnexion</a>
-            </li>
+            
         </ul>
 
         <!-- Right navbar links -->
@@ -182,6 +180,9 @@
                         </ul>
                     </li>
                 </ul>
+                    <g:form controller="logout">
+                        <g:submitButton class="nav-link" name="logout" value="Logout" />
+                    </g:form>
             </nav>
             <!-- /.sidebar-menu -->
         </div>
