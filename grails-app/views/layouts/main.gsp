@@ -183,7 +183,7 @@
                     </li>
                 </ul>
                     <g:form controller="logout">
-                        <g:submitButton name="logout" value="Logout" />
+                        <g:submitButton class="nav-link" name="logout" value="Logout" />
                     </g:form>
             </nav>
             <!-- /.sidebar-menu -->
