@@ -5,7 +5,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
-@Secured('ROLE_ADMIN')
+@Secured(['ROLE_ADMIN','ROLE_MODO'])
 class UserController {
 
     UserService userService
@@ -45,6 +45,7 @@ class UserController {
 
         request.withFormat {
             form multipartForm {
+                flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'Utilisateyr')])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -110,6 +111,7 @@ class UserController {
         }
         request.withFormat {
             form multipartForm {
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'Utilisateur'), ""])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }

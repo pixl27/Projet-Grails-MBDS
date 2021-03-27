@@ -7,7 +7,7 @@ import grails.plugin.springsecurity.annotation.Secured
 
 import javax.servlet.http.HttpServletResponse
 
-@Secured(['ROLE_ADMIN','ROLE_MODERATOR'])
+@Secured(['ROLE_ADMIN','ROLE_MODO'])
 class ApiController {
     AnnonceService annonceService
     UserService userService

@@ -28,6 +28,9 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Liste des Annonces</h3>
+                <g:if test='${flash.message}'>
+                    <div class="alert alert-danger" role="alert">${flash.message}</div>
+                </g:if>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
