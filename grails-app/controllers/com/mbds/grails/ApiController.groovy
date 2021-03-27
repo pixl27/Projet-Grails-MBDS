@@ -7,7 +7,7 @@ import grails.plugin.springsecurity.annotation.Secured
 
 import javax.servlet.http.HttpServletResponse
 
-@Secured(['ROLE_ADMIN'])
+@Secured(['ROLE_ADMIN','ROLE_MODERATOR'])
 class ApiController {
     AnnonceService annonceService
     UserService userService
@@ -32,6 +32,7 @@ class ApiController {
             case "PUT":
                 if (!params.id)
                     return response.status = HttpServletResponse.SC_BAD_REQUEST
+
                 def req = request.JSON
 
                 def annonce = Annonce.get(params.id)
@@ -132,6 +133,7 @@ class ApiController {
             case "DELETE":
                 if (!params.id)
                     return response.status = HttpServletResponse.SC_BAD_REQUEST
+                UserRole.removeAll(userService.get(params.id))
                 userService.delete(params.id)
                 return response.status = HttpServletResponse.SC_OK
                 break

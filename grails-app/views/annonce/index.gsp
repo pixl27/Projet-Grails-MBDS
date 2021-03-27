@@ -44,8 +44,9 @@
                         <td>${annonce.price}</td>
                         <td>${annonce.description}</td>
                         <td>
-                            <g:link id="${annonce.id}" action="edit">modifier</g:link>
-
+                            <g:link id="${annonce.id}" action="edit">
+                                <input type="button"  class="btn btn-success" value="Modifier" class="button"/>
+                            </g:link>
                         </td>
                         <td>
                             <button type="button" id="button_${annonce.id}" class="btn btn-danger" data-toggle="modal" data-target="#delete_${annonce.id}" data-whatever="@mdo">Delete</button>
