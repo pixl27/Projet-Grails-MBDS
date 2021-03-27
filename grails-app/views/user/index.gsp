@@ -50,11 +50,40 @@
                                     </g:link>
                                 </td>
                                 <td>
-                                    <g:form resource="${user}" method="delete">
-                                        <input type="submit" class="btn btn-danger" value="Supprimer" />
-                                    </g:form>
+
+
+                                    <button type="button" id="button_${utilisateur.id}" class="btn btn-danger" data-toggle="modal" data-target="#delete_${utilisateur.id}" data-whatever="@mdo">Delete</button>
+
                                 </td>
                             </tr>
+
+                            <!-- /.modale start delete -->
+                            <div class="modal fade" id="delete_${utilisateur.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 id="exampleModalLabel1">Vous voulez vraiment suprimer ${utilisateur.username} de cette utilisateur ? </h4>
+                                        </div>
+
+                                        <div class="modal-body">
+
+                                                <g:form controller="user" id="${utilisateur.id}" action="delete" method="DELETE">
+                                                    <input type="submit" class="btn btn-danger" value="Oui" />
+                                                </g:form>
+
+
+
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Non</button>
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <!-- /.modale end delete -->
+
                         </g:each>
                         </tbody>
 

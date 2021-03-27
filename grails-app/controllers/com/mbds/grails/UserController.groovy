@@ -126,7 +126,9 @@ class UserController {
 
             println "delete"+id
 
+            UserRole.removeAll(userService.get(id))
             userService.delete(id)
+
 
         } catch (Exception e) {
 
