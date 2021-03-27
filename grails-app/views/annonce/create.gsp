@@ -47,10 +47,14 @@
                         <label for="price">Price *</label>
                         <input name="price" type="text" class="form-control" id="price" placeholder="price">
                       </div>
-                      <div class="form-group">
-                        <label for="files">Select files:</label>
-                        <input name="file" type="file" id="files" name="files" multiple><br><br>
-                      </div>
+                       <div class="form-group">
+                         <label for="files">Ajoutez des illustrations:</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                            <input name="file" type="file" id="files" multiple><br><br>
+                        </div>
+                    </div>
+                    </div>
                     <!-- /.card-body -->
 
                     <div class="card-footer">

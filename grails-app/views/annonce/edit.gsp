@@ -7,6 +7,7 @@
 </head>
 
 <body>
+
 <a href="#edit-annonce" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                               default="Skip to content&hellip;"/></a>
 
@@ -26,7 +27,7 @@
     <!-- /.card-header -->
     <!-- form start -->
 <g:uploadForm controller="annonce" action="update" id="${annonce.id}">
-    <g:hiddenField name="version" value="${this.annonce?.version}"/>
+    <g:hiddenField name="version" value="${this.annonce?.version}" />
         <div class="card-body">
             <div class="form-group">
                 <label for="exampleInputEmail1">Title</label>
@@ -43,21 +44,60 @@
             <div class="fieldcontain">
                 <label for="illustrations">Illustrations</label>
                 <g:each in="${annonce.illustrations}" var="illustration">
-                    <img src="${baseUrl + illustration.filename}" />
+                    <img src="${baseUrl + illustration.filename}" id="img_${illustration.id}"/>
+                    <button type="button" id="button_${illustration.id}" class="btn btn-danger" data-toggle="modal" data-target="#delete_${illustration.id}" data-whatever="@mdo">Delete</button>
+                    <div class="modal fade" id="delete_${illustration.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 id="exampleModalLabel1">Vous voulez vraiment suprimer ${illustration.filename} de cette annonce? </h4>
+                                </div>
+
+                                <div class="modal-body">
+
+                                    <script>
+                                        function callAjax2(idData){
+                                            console.log("voclick");
+
+
+                                                    var URL="${createLink(controller:'annonce',action:'addIllustration')}";
+
+                                                    $.ajax({
+                                                        url:URL,
+                                                        data: {id:idData},
+                                                        success: function(resp){
+                                                            document.getElementById("img_"+idData).remove();
+                                                            document.getElementById("button_"+idData).remove();
+                                                        }
+                                                    });
+
+                                        }
+
+                                    </script>
+                                <button type = "button" data-dismiss="modal" onclick="callAjax2(${illustration.id})" id="buttonOui" class="btn btn-success">Oui</button>
+
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">non</button>
+
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
                 </g:each>
             </div>
             <div class="form-group">
-                <label for="exampleInputFile">Ajoutez nouvelle image</label>
+                <label for="files">Ajoutez des illustrations:</label>
                 <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="file" id="file">
-                        <label class="custom-file-label" for="exampleInputFile">Choisir une nouvelle fichier</label>
-                    </div>
-                    <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
+                    <input name="file" type="file" id="files" multiple><br><br>
                     </div>
                 </div>
             </div>
+            </div>
+
         </div>
         <!-- /.card-body -->
 
@@ -66,5 +106,7 @@
         </div>
 </g:uploadForm>
 </div>
+
+
 </body>
 </html>
