@@ -8,7 +8,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <asset:javascript src="application.js"/>
+    <asset:javascript src="plugins/jquery/jquery.min.js"/>
 
     <asset:javascript src="plugins/bootstrap/js/bootstrap.bundle.min.js"/>
     <!-- DataTables  & Plugins -->
