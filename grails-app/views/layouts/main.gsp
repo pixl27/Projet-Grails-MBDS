@@ -18,12 +18,7 @@
     <asset:javascript src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"/>
     <asset:javascript src="plugins/datatables-buttons/js/dataTables.buttons.min.js"/>
     <asset:javascript src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"/>
-    <asset:javascript src="plugins/jszip/jszip.min.js"/>
-    <asset:javascript src="plugins/pdfmake/pdfmake.min.js"/>
-    <asset:javascript src="plugins/pdfmake/vfs_fonts.js"/>
-    <asset:javascript src="plugins/datatables-buttons/js/buttons.html5.min.js"/>
-    <asset:javascript src="plugins/datatables-buttons/js/buttons.print.min.js"/>
-    <asset:javascript src="plugins/datatables-buttons/js/buttons.colVis.min.js"/>
+
     <!-- AdminLTE Ap -->
     <asset:javascript src="js/adminlte.min.js"/>
 
