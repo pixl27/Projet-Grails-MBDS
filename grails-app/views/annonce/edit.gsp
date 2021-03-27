@@ -8,21 +8,9 @@
 
 <body>
 
-<a href="#edit-annonce" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
-                                                              default="Skip to content&hellip;"/></a>
-
-<div class="nav" role="navigation">
-    <ul>
-        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]"/></g:link></li>
-        <li><g:link class="create" action="create"><g:message code="default.new.label"
-                                                              args="[entityName]"/></g:link></li>
-    </ul>
-</div>
-
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Quick Example</h3>
+        <h3 class="card-title">Modifier Annonce</h3>
     </div>
     <!-- /.card-header -->
     <!-- form start -->
@@ -102,7 +90,7 @@
         <!-- /.card-body -->
 
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Modifier</button>
         </div>
 </g:uploadForm>
 </div>

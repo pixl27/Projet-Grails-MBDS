@@ -4,30 +4,15 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'annonce.label', default: 'Annonce')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
-
-
-
     </head>
 
     <body>
 
 
-        <a href="#list-annonce" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-            </ul>
-        </div>
-
-
     <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">DataTable with minimal features &amp; hover style</h3>
-        </div>
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
+                <h3 class="card-title">Liste des Annonces</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -40,11 +25,11 @@
 <g:each in="${annonceList}" var="annonce">
                     <tr class="">
                         <td class="dtr-control sorting_1" tabindex="0">${annonce.id}</td>
-                        <td class="" tabindex="0">${annonce.title}</td>
+                        <td class="" tabindex="0"><g:link id="${annonce.id}" action="show">${annonce.title}</g:link></td>
                         <td>${annonce.price}</td>
                         <td>${annonce.description}</td>
                         <td>
-                            <g:link id="${annonce.id}" action="edit">${annonce.title}</g:link>
+                            <g:link id="${annonce.id}" action="edit">modifier</g:link>
 
                         </td>
                         <td>
