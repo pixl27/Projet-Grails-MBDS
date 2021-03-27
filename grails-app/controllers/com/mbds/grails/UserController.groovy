@@ -121,10 +121,20 @@ class UserController {
             notFound()
             return
         }
-
         try {
 
+        try {
             println "delete"+id
+
+            println "delete"+id
+
+            UserRole.removeAll(userService.get(id))
+            userService.delete(id)
+
+
+        } catch (Exception e) {
+
+        }
 
             UserRole.removeAll(userService.get(id))
             userService.delete(id)

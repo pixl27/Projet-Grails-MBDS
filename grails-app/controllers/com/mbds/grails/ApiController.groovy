@@ -77,7 +77,7 @@ class ApiController {
                 break
             case "POST":
                 def req = request.JSON
-                println "id"+springSecurityService.currentUser.id
+
                 def user = User.get(springSecurityService.currentUser.id)
                 def annonce =new Annonce(
                         title: req.title,
@@ -118,6 +118,12 @@ class ApiController {
                     return
                 }
                 user.username = req.username
+                user.enabled = req.enabled
+                user.accountExpired = req.accountExpired
+                user.accountLocked = req.accountLocked
+                user.passwordExpired = req.passwordExpired
+                def role = Role.get(req.idrole)
+                UserRole.create(user,role,true)
                 userService.save(user)
                 return response.status = HttpServletResponse.SC_OK
                 break
