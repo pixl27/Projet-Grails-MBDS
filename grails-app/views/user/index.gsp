@@ -22,21 +22,18 @@
     </div><!-- /.container-fluid -->
 </div>
 
-
 <div class="card">
 
     <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Liste utilisateurs</h3>
-        </div>
-        <div class="card">
-
             <!-- /.card-header -->
             <div class="card-body">
+
+
+
                 <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12">
                     <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                         <thead>
-                        <tr role="row"><th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Id</th><th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Username</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Password Expired</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Account Locked</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Account Expired</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Enabled</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Action</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Action</th></tr>
+                        <tr role="row"><th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Id</th><th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nom Utilisateur</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Mot de passe expiré</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Compte bloqué</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Compte expiré</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Activé</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Action</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Action</th></tr>
                         </thead>
                         <tbody>
 
@@ -48,10 +45,49 @@
                                 <td>${utilisateur.accountLocked}</td>
                                 <td>${utilisateur.accountExpired}</td>
                                 <td>${utilisateur.enabled}</td>
-                                <td>                            <g:link id="${utilisateur.id}" action="edit">Modifier</g:link>
+                                <td>
+                                    <g:link id="${utilisateur.id}" action="edit">
+                                        <input type="button"  class="btn btn-success" value="Modifier" class="button"/>
+                                    </g:link>
                                 </td>
-                                <td><input id="deleteButton" data-id="${utilisateur.id}" class="btn btn-danger" value="Supprimer" /></td>
+                                <td>
+
+
+                                    <button type="button" id="button_${utilisateur.id}" class="btn btn-danger" data-toggle="modal" data-target="#delete_${utilisateur.id}" data-whatever="@mdo">Supprimer</button>
+
+                                </td>
+
+                                <!-- /.modale start delete -->
+                                <div class="modal fade" id="delete_${utilisateur.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 id="exampleModalLabel1">Vous voulez vraiment suprimer ${utilisateur.username} de cette utilisateur ? </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+
+                                                <g:form controller="user" id="${utilisateur.id}" action="delete" method="DELETE">
+                                                    <input type="submit" class="btn btn-success" value="Oui" />
+                                                </g:form>
+
+
+
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Non</button>
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <!-- /.modale end delete -->
+
                             </tr>
+
+
+
                         </g:each>
                         </tbody>
 
@@ -60,7 +96,6 @@
             <!-- /.card-body -->
         </div>
     </div>
-
 
 
 <g:javascript>
