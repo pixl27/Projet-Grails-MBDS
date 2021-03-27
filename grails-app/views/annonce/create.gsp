@@ -33,7 +33,7 @@
             <!-- /.card-header -->
             <!-- form start -->
 
-                <g:form controller="annonce" action="save" method="POST">
+                <g:uploadForm controller="annonce" action="save" method="POST">
                     <div class="card-body">
                       <div class="form-group">
                         <label for="titre">Titre *</label>
@@ -48,15 +48,16 @@
                         <input name="price" type="text" class="form-control" id="price" placeholder="price">
                       </div>
                       <div class="form-group">
-                        <label>Eto mbola tokony misy bouton oe add illustration</label>
-                        </div>
+                        <label for="files">Select files:</label>
+                        <input name="file" type="file" id="files" name="files" multiple><br><br>
+                      </div>
                     <!-- /.card-body -->
 
                     <div class="card-footer">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 
                     </div>
-                </g:form>
+                </g:uploadForm>
             </div>
         </div>
     </body>
