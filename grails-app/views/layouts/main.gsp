@@ -113,7 +113,7 @@
                     <asset:image src="user2-160x160.jpg" alt="User Image" class="img-circle elevation-2"/>
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Admin</a>
+                    <a href="#" class="d-block"><sec:loggedInUserInfo field='username'/></a>
                 </div>
             </div>
 
@@ -183,9 +183,11 @@
                         </ul>
                     </li>
                 </ul>
+                <sec:ifLoggedIn>
                     <g:form controller="logout">
                         <g:submitButton class="nav-link" name="logout" value="Logout" />
                     </g:form>
+                </sec:ifLoggedIn>
             </nav>
             <!-- /.sidebar-menu -->
         </div>
