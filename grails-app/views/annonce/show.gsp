@@ -6,7 +6,22 @@
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
-    <section class="content">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0"><g:message code="default.show.label" args="[entityName]" /></h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active"><g:message code="default.show.label" args="[entityName]" /></li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+
 
         <!-- Default box -->
         <div class="card card-solid">
@@ -66,6 +81,6 @@
         </div>
         <!-- /.card -->
 
-    </section>
+
     </body>
 </html>
