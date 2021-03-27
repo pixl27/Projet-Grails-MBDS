@@ -167,10 +167,10 @@
 
 
                             <li class="nav-item">
-                                <a href="pages/examples/lockscreen.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
+                                <g:link controller="annonce" class="create nav-link" action="create">
+                                    <i class="fas fa-angle-double-right nav-icon"></i>
                                     <p>Annonce</p>
-                                </a>
+                                </g:link>
                             </li>
                             <li class="nav-item">
                                 <a href="pages/examples/legacy-user-menu.html" class="nav-link">

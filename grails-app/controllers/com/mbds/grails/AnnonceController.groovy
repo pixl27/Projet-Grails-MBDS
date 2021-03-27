@@ -30,14 +30,20 @@ class AnnonceController {
             notFound()
             return
         }
-
         try {
-
+            def document = request.getFiles("file")
+            document.each { file ->
+                if(!file.isEmpty()){
+                    File fileDest = new File(grailsApplication.config.annonces.illustrations.path+file.originalFilename)
+                    file.transferTo(fileDest)
+                    annonce.addToIllustrations(new Illustration(filename: file.originalFilename))
+                }
+            }
             def user = User.get(springSecurityService.currentUser.id)
             user.addToAnnonces(annonce)
             user.save(flush: true, failOnError: true)
-
             println "vita chocolat"
+
         } catch (ValidationException e) {
             respond annonce.errors, view:'create'
             return
