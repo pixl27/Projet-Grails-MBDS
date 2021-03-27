@@ -32,15 +32,6 @@
                         </thead>
                         <tbody>
 
-                        /*
-                        String username
-                        String password
-                        boolean enabled = true
-                        boolean accountExpired
-                        boolean accountLocked
-                        boolean passwordExpired
-
-                        */
                         <g:each in="${userList}" var="utilisateur">
                             <tr class="">
                                 <td class="dtr-control sorting_1" tabindex="0">${utilisateur.id}</td>
@@ -49,7 +40,7 @@
                                 <td>${utilisateur.accountLocked}</td>
                                 <td>${utilisateur.accountExpired}</td>
                                 <td>${utilisateur.enabled}</td>
-                                <td><input type="submit" class="btn btn-danger" value="Supprimer" /></td>
+                                <td><input id="deleteButton" data-id="${utilisateur.id}" class="btn btn-danger" value="Supprimer" /></td>
                             </tr>
                         </g:each>
                         </tbody>
@@ -64,6 +55,20 @@
             $('#example1').DataTable();
         } );
     </g:javascript>
+
+    <script>
+        $('#deleteButton').on('click',function() {
+            var id=$(this).attr('data-id');
+            var url="${createLink(controller: 'user',action:'delete')}/"+id
+            $.ajax({
+                type: 'POST',
+                url: url,
+                success: function(data){
+                    $('#results').html(data);
+                }
+            });
+        })
+        </script>
 
 
     <!-- /.tableau listes utilisateur

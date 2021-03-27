@@ -82,6 +82,7 @@ class UserController {
             notFound()
             return
         }
+        println "delete"+id
 
         userService.delete(id)
 
