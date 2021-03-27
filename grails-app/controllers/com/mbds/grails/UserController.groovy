@@ -121,9 +121,16 @@ class UserController {
             notFound()
             return
         }
-        println "delete"+id
 
-        userService.delete(id)
+        try {
+
+            println "delete"+id
+
+            userService.delete(id)
+
+        } catch (Exception e) {
+
+        }
 
         request.withFormat {
             form multipartForm {

@@ -44,9 +44,16 @@
                                 <td>${utilisateur.accountLocked}</td>
                                 <td>${utilisateur.accountExpired}</td>
                                 <td>${utilisateur.enabled}</td>
-                                <td>                            <g:link id="${utilisateur.id}" action="edit">Modifier</g:link>
+                                <td>
+                                    <g:link id="${utilisateur.id}" action="edit">
+                                        <input type="button" value="Modifier" class="button"/>
+                                    </g:link>
                                 </td>
-                                <td><input id="deleteButton" data-id="${utilisateur.id}" class="btn btn-danger" value="Supprimer" /></td>
+                                <td>
+                                    <g:form resource="${user}" method="delete">
+                                        <input type="submit" class="btn btn-danger" value="Supprimer" />
+                                    </g:form>
+                                </td>
                             </tr>
                         </g:each>
                         </tbody>
@@ -56,19 +63,6 @@
             <!-- /.card-body -->
         </div>
     </div>
-    <script>
-        $('#deleteButton').on('click',function() {
-            var id=$(this).attr('data-id');
-            var url="${createLink(controller: 'user',action:'delete')}/"+id
-            $.ajax({
-                type: 'POST',
-                url: url,
-                success: function(data){
-                    $('#results').html(data);
-                }
-            });
-        })
-        </script>
 
 
 <g:javascript>
