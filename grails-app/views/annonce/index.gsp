@@ -47,7 +47,11 @@
                             <g:link id="${annonce.id}" action="edit">${annonce.title}</g:link>
 
                         </td>
-                        <td><input type="submit" class="btn btn-danger" value="Supprimer" /></td>
+                        <td>
+    <g:form resource="${annonce}" method="DELETE">
+                            <input type="submit" class="btn btn-danger" value="Supprimer" />
+      </g:form>
+                        </td>
                     </tr>
    </g:each>
                     </tbody>

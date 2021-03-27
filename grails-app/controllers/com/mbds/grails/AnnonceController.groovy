@@ -16,7 +16,7 @@ class AnnonceController {
     }
 
     def show(Long id) {
-        respond annonceService.get(id)
+        respond annonceService.get(id) , model: [annonceList: Annonce.list(), baseUrl: grailsApplication.config.annonces.illustrations.url]
     }
 
     def create() {
