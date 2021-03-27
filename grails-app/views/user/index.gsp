@@ -32,7 +32,7 @@
                 <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12">
                     <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                         <thead>
-                        <tr role="row"><th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Id</th><th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Username</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Password Expired</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Account Locked</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Account Expired</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Enabled</th></tr>
+                        <tr role="row"><th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Id</th><th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Username</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Password Expired</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Account Locked</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Account Expired</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Enabled</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Action</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Action</th></tr>
                         </thead>
                         <tbody>
 
@@ -44,6 +44,8 @@
                                 <td>${utilisateur.accountLocked}</td>
                                 <td>${utilisateur.accountExpired}</td>
                                 <td>${utilisateur.enabled}</td>
+                                <td>                            <g:link id="${utilisateur.id}" action="edit">Modifier</g:link>
+                                </td>
                                 <td><input id="deleteButton" data-id="${utilisateur.id}" class="btn btn-danger" value="Supprimer" /></td>
                             </tr>
                         </g:each>
@@ -54,12 +56,6 @@
             <!-- /.card-body -->
         </div>
     </div>
-    <g:javascript>
-        $(document).ready( function () {
-            $('#example1').DataTable();
-        } );
-    </g:javascript>
-
     <script>
         $('#deleteButton').on('click',function() {
             var id=$(this).attr('data-id');
@@ -75,21 +71,6 @@
         </script>
 
 
-                            </td>
-                            <td>
-                                <g:form resource="${user}" method="DELETE">
-                                    <input type="submit" class="btn btn-danger" value="Supprimer" />
-                                </g:form>
-                            </td>
-                        </tr>
-                    </g:each>
-                    </tbody>
-
-                </table></div></div><div class="row"></div></div>
-        </div>
-        <!-- /.card-body -->
-    </div>
-</div>
 <g:javascript>
     $(document).ready( function () {
         $('#example1').DataTable();
