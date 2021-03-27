@@ -6,27 +6,31 @@
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
 <body>
-
-
-<a href="#list-annonce" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-<div class="nav" role="navigation">
-    <ul>
-        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-    </ul>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0"><g:message code="default.list.label" args="[entityName]" /></h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active"><g:message code="default.list.label" args="[entityName]" /></li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
 </div>
+
+
 <div class="card">
-    <div class="card-header">
-        <h3 class="card-title">DataTable with minimal features &amp; hover style</h3>
-    </div>
+
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">DataTable with default features</h3>
+            <h3 class="card-title">Liste utilisateurs</h3>
         </div>
         <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
-            </div>
+
             <!-- /.card-header -->
             <div class="card-body">
                 <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12">
@@ -51,7 +55,7 @@
                         </g:each>
                         </tbody>
 
-                    </table></div></div><div class="row"></div></div>
+                    </table>
             </div>
             <!-- /.card-body -->
         </div>

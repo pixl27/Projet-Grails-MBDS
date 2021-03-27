@@ -52,9 +52,12 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="index3.html" class="nav-link">Home</a>
+                <g:link url="/projet/" class="nav-link">
+                    Home
+                </g:link>
+
             </li>
-            
+
         </ul>
 
         <!-- Right navbar links -->
@@ -110,7 +113,7 @@
                     <asset:image src="user2-160x160.jpg" alt="User Image" class="img-circle elevation-2"/>
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a href="#" class="d-block">Admin</a>
                 </div>
             </div>
 
@@ -146,10 +149,10 @@
                                 </g:link>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/examples/invoice.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
+                                <g:link controller="user" class="create nav-link">
+                                    <i class="fas fa-angle-double-right nav-icon"></i>
                                     <p>Utilisateur</p>
-                                </a>
+                                </g:link>
                             </li>
                         </ul>
                     </li>
@@ -192,21 +195,7 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Dashboard</h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard v1</li>
-                        </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
+
         <!-- /.content-header -->
 
         <!-- Main content -->
