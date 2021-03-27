@@ -10,7 +10,7 @@
         <g:hiddenField name="version" value="${this.user?.version}"/>
         <div class="card-body">
             <div class="form-group">
-                <label for="exampleInputEmail1">Username</label>
+                <label for="exampleInputEmail1">Nom utilisateur</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" name="username" value="${user.username}" placeholder="Enter email">
             </div>
             <div class="form-group">
@@ -77,7 +77,7 @@
                 <!-- /.card-body -->
 
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Valider</button>
         </div>
     </g:form>
         </div>
