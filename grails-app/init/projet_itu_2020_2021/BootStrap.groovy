@@ -11,6 +11,18 @@ class BootStrap {
 
     def init = { servletContext ->
 
+        def adminRole = new Role(authority: "ROLE_ADMIN").save()
+        def modRole = new Role(authority: "ROLE_MODO").save()
+        def userRole = new Role(authority: "ROLE_USER").save()
+
+        def adminUser = new User(username: "admin", password: "password").save()
+        def modUser = new User(username: "moderateur", password: "password").save()
+        def userUser = new User(username: "client", password: "password").save()
+
+        UserRole.create adminUser, adminRole, true
+        UserRole.create(modUser, modRole, true)
+        UserRole.create(userUser, userRole, true)
+
         User.list().each {
             User userInstance ->
                 (1..5).each {
@@ -28,18 +40,6 @@ class BootStrap {
                 }
                 userInstance.save(flush: true, failOnError: true)
         }
-
-        def adminRole = new Role(authority: "ROLE_ADMIN").save()
-        def modRole = new Role(authority: "ROLE_MODO").save()
-        def userRole = new Role(authority: "ROLE_USER").save()
-
-        def adminUser = new User(username: "admin", password: "password").save()
-        def modUser = new User(username: "moderateur", password: "password").save()
-        def userUser = new User(username: "client", password: "password").save()
-
-        UserRole.create (adminUser, adminRole, true)
-        UserRole.create(modUser, modRole, true)
-        UserRole.create(userUser, userRole, true)
 
     }
     def destroy = {
