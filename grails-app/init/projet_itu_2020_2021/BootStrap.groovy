@@ -19,27 +19,22 @@ class BootStrap {
         def modUser = new User(username: "moderateur", password: "password").save()
         def userUser = new User(username: "client", password: "password").save()
 
-        UserRole.create adminUser, adminRole, true
+        grails.project.fork = [
+// Configure settings for compilation JVM, note that if you alter the Groovy version forked compilation is required
+//  compile: [maxMemory: 256, minMemory: 64, debug: false, maxPerm: 256, daemon:true],
+// Configure settings for the test-app JVM, uses the daemon by default
+test: [maxMemory: 768, minMemory: 768, debug: false, maxPerm: 768, daemon:true],
+// Configure settings for the run-app JVM
+run: [maxMemory: 4560, minMemory: 1024, debug: false, maxPerm: 2560, forkReserve:false],
+// Configure settings for the run-war JVM
+war: [maxMemory: 4560, minMemory: 2560, debug: false, maxPerm: 2560, forkReserve:false],
+// Configure settings for the Console UI JVM
+console: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256]
+]
+        UserRole.create (adminUser, adminRole, true)
         UserRole.create(modUser, modRole, true)
         UserRole.create(userUser, userRole, true)
 
-        User.list().each {
-            User userInstance ->
-                (1..5).each {
-                    Integer annonceIdx ->
-                        def annonceInstance = new Annonce(
-                                title: "Titre de l'annonce $annonceIdx ",
-                                description: "Description de l'annonce $annonceIdx",
-                                price: 100 * annonceIdx
-                        )
-                        (1..5).each {
-                            annonceInstance.addToIllustrations(new Illustration(filename: "grails.svg"))
-                        }
-                        userInstance.addToAnnonces(annonceInstance)
-
-                }
-                userInstance.save(flush: true, failOnError: true)
-        }
 
     }
     def destroy = {
