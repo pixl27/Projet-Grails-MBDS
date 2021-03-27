@@ -127,7 +127,7 @@ environments:
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
 server:
-    port: 8081
+    port: 80
     contextPath: /projet
 annonces:
     illustrations:
