@@ -5,19 +5,23 @@
         <g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
-    <body>
-        <a href="#list-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-            </ul>
-        </div>
+<body>
 
 
+<a href="#list-annonce" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+<div class="nav" role="navigation">
+    <ul>
+        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+        <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+    </ul>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">DataTable with minimal features &amp; hover style</h3>
+    </div>
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">DataTable with minimal features &amp; hover style</h3>
+            <h3 class="card-title">DataTable with default features</h3>
         </div>
         <div class="card">
             <div class="card-header">
@@ -71,19 +75,25 @@
         </script>
 
 
-    <!-- /.tableau listes utilisateur
-        <div id="list-user" class="content scaffold-list" role="main">
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-                <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <f:table collection="${userList}" />
+                            </td>
+                            <td>
+                                <g:form resource="${user}" method="DELETE">
+                                    <input type="submit" class="btn btn-danger" value="Supprimer" />
+                                </g:form>
+                            </td>
+                        </tr>
+                    </g:each>
+                    </tbody>
 
-            <div class="pagination">
-                <g:paginate total="${userCount ?: 0}" />
-            </div>
+                </table></div></div><div class="row"></div></div>
         </div>
- -->
-
-    </body>
+        <!-- /.card-body -->
+    </div>
+</div>
+<g:javascript>
+    $(document).ready( function () {
+        $('#example1').DataTable();
+    } );
+</g:javascript>
+</body>
 </html>
