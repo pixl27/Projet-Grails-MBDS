@@ -56,19 +56,7 @@
             <!-- /.card-body -->
         </div>
     </div>
-    <script>
-        $('#deleteButton').on('click',function() {
-            var id=$(this).attr('data-id');
-            var url="${createLink(controller: 'user',action:'delete')}/"+id
-            $.ajax({
-                type: 'POST',
-                url: url,
-                success: function(data){
-                    $('#results').html(data);
-                }
-            });
-        })
-        </script>
+
 
 
 <g:javascript>
