@@ -46,7 +46,7 @@
                                 <td>${utilisateur.enabled}</td>
                                 <td>
                                     <g:link id="${utilisateur.id}" action="edit">
-                                        <input type="button" value="Modifier" class="button"/>
+                                        <input type="button"  class="btn btn-success" value="Modifier" class="button"/>
                                     </g:link>
                                 </td>
                                 <td>
@@ -68,7 +68,7 @@
                                         <div class="modal-body">
 
                                                 <g:form controller="user" id="${utilisateur.id}" action="delete" method="DELETE">
-                                                    <input type="submit" class="btn btn-danger" value="Oui" />
+                                                    <input type="submit" class="btn btn-success" value="Oui" />
                                                 </g:form>
 
 
