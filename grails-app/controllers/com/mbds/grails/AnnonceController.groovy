@@ -10,9 +10,17 @@ class AnnonceController {
 
     AnnonceService annonceService
     SpringSecurityService springSecurityService
+    IllustrationService illustrationService
+    def illustrationAsupprimer = []
 
     def index(Integer max) {
         respond annonceService.list(params)
+    }
+
+    def addIllustration(Long id){
+        println "id"+id
+        illustrationAsupprimer.add(id)
+        render(status: 200)
     }
 
     def show(Long id) {
@@ -65,33 +73,47 @@ class AnnonceController {
 
     def update() {
         def annonce = Annonce.get(params.id)
-        annonce.title = params.title
-        annonce.description = params.description
-        annonce.price = Double.parseDouble(params.price)
-//        annonce.author = User.get(params.author.id)
-        def uploadedFile = request.getFile("file")
-        if(!uploadedFile.isEmpty()){
-            File fileDest = new File(grailsApplication.config.annonces.illustrations.path+uploadedFile.originalFilename)
-            uploadedFile.transferTo(fileDest)
-            annonce.addToIllustrations(new Illustration(filename: uploadedFile.originalFilename))
-        }
-
 
         if (annonce == null) {
             notFound()
             return
         }
-        /**
-         * FAIT
-         * 1. Récupérer le fichier dans la requête
-         * 2. Sauvegarder le fichier localement
-         * 3. Créer un illustration sur le fichier que vous avez sauvegardé
-         * 4. Attacher l'illustration nouvellement créée à l'annonce
-         */
+        annonce.title = params.title
+        annonce.description = params.description
+        annonce.price = Double.parseDouble(params.price)
+
+        def document = request.getFiles("file")
+        document.each { file ->
+            if(!file.isEmpty()){
+                File fileDest = new File(grailsApplication.config.annonces.illustrations.path+file.originalFilename)
+                file.transferTo(fileDest)
+                annonce.addToIllustrations(new Illustration(filename: file.originalFilename))
+            }
+        }
+        println "test submit"+illustrationAsupprimer.size()
+
+
+
+
+
 
         try {
 
             annonceService.save(annonce)
+            if(!illustrationAsupprimer.isEmpty()){
+                for (Long id : illustrationAsupprimer) {
+                    println "illustrationId"+id
+                    def illustration = annonce.illustrations.find {it.id==id}
+                    println "illustration"+illustration.filename+"id"+id
+                    annonce.removeFromIllustrations(illustration).save()
+                    illustrationService.delete(id)
+                    annonce.save(flush:true)
+                }
+                println "illustration isa"+annonce.illustrations.size()
+                illustrationAsupprimer.clear()
+            }
+
+
         } catch (ValidationException e) {
             respond annonce.errors, view:'edit'
             return
