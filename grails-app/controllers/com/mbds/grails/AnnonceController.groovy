@@ -16,7 +16,11 @@ class AnnonceController {
     def index(Integer max) {
         respond annonceService.list(params)
     }
-
+    def annuler(){
+        illustrationAsupprimer.clear()
+        println "manadio"
+        render(status: 200)
+    }
     def addIllustration(Long id){
         println "id"+id
         illustrationAsupprimer.add(id)

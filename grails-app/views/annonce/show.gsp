@@ -33,8 +33,14 @@
                     <div class="col-12 col-sm-6">
                         <h3 class="d-inline-block d-sm-none"></h3>
                         <div class="col-12">
-                            <img src="${baseUrl + annonce.illustrations.first().filename}" class="product-image" alt="Product Image">
-                        </div>
+                            <g:if test="${!annonce.illustrations.isEmpty()}">
+
+
+                                <img src="${baseUrl + annonce.illustrations.first().filename}" class="product-image" alt="Product Image">
+                            </g:if>
+                            <g:else>
+                                <asset:image src="No-Image-Found-400x264.png" class="product-image"  />
+                            </g:else>                        </div>
                         <div class="col-12 product-image-thumbs">
                             <g:each in="${annonce.illustrations}" var="illustration">
                                 <div class="product-image-thumb active"><img src="${baseUrl + illustration.filename}" alt="Product Image"></div>

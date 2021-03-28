@@ -7,6 +7,26 @@
 </head>
 
 <body>
+<script>
+    jQuery(document).ready(function($) {
+
+        if (window.history && window.history.pushState) {
+
+            window.history.pushState('forward', null, '');
+
+            $(window).on('popstate', function() {
+                var URL="${createLink(controller:'annonce',action:'annuler')}";
+
+                $.ajax({
+                    url:URL,
+                    success: function(resp){
+                        window.history.back();
+                    }
+                });
+            });
+
+        }
+    });</script>
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
